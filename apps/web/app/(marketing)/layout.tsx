@@ -6,7 +6,7 @@ const marketingLinks = [
   { href: "/pricing", label: "Pricing" },
   { href: "/licensing", label: "Licensing" },
   { href: "/contributors", label: "Contributors" }
-];
+] as const;
 
 export default function MarketingLayout({
   children

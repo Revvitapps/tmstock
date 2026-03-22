@@ -1,4 +1,6 @@
 :root {
+  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --font-sans: "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif;
   --bg: #f8f1e7;
   --bg-strong: #efe1d0;
   --surface: rgba(255, 248, 240, 0.78);

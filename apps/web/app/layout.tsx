@@ -1,16 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Instrument_Sans } from "next/font/google";
 import "./globals.css";
-
-const display = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-display"
-});
-
-const sans = Instrument_Sans({
-  subsets: ["latin"],
-  variable: "--font-sans"
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://tmstock.example"),
@@ -35,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${display.variable} ${sans.variable}`}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
