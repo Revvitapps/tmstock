@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { catalogAssets } from "@/lib/catalog";
 
 export const metadata: Metadata = {
   title: "Search",
@@ -8,12 +10,6 @@ export const metadata: Metadata = {
     follow: true
   }
 };
-
-const results = [
-  { title: "Cinnamon Studio Portrait", tags: "portrait, warm, campaign", license: "Commercial" },
-  { title: "Ochre Editorial Walk", tags: "street, fashion, motion", license: "Editorial" },
-  { title: "Dusty Rose Flatlay", tags: "product, texture, still-life", license: "Commercial" }
-];
 
 export default function SearchPage() {
   return (
@@ -48,12 +44,20 @@ export default function SearchPage() {
 
         <section className="section">
           <div className="grid">
-            {results.map((result) => (
-              <div key={result.title} className="panel">
-                <p className="kicker">{result.license}</p>
-                <h3>{result.title}</h3>
-                <p className="subtle">{result.tags}</p>
-              </div>
+            {catalogAssets.map((asset) => (
+              <Link key={asset.id} href={`/assets/${asset.slug}`} className="panel">
+                <p className="kicker">{asset.license}</p>
+                <div
+                  className="asset-media"
+                  style={{ aspectRatio: "4 / 3", backgroundImage: `url(${asset.image})` }}
+                />
+                <h3>{asset.title}</h3>
+                <p className="subtle">{asset.tags.join(", ")}</p>
+                <div className="meta">
+                  <span>{asset.category}</span>
+                  <span>{asset.price}</span>
+                </div>
+              </Link>
             ))}
           </div>
         </section>

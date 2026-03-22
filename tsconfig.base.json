@@ -19,6 +19,9 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
+      "@/*": [
+        "apps/web/*"
+      ],
       "@tmstock/ui/*": [
         "packages/ui/*"
       ]

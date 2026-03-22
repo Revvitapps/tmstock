@@ -1,33 +1,9 @@
 import Link from "next/link";
-
-const featuredAssets = [
-  {
-    id: "amber-editorial-01",
-    title: "Amber Light Portrait",
-    type: "Editorial portrait",
-    price: "$24",
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    id: "terracotta-studio-02",
-    title: "Terracotta Studio Set",
-    type: "Campaign backdrop",
-    price: "$29",
-    image:
-      "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    id: "golden-motion-03",
-    title: "Golden Motion Frame",
-    type: "Fashion movement",
-    price: "$32",
-    image:
-      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80"
-  }
-];
+import { catalogAssets } from "@/lib/catalog";
 
 export default function HomePage() {
+  const featuredAssets = catalogAssets.slice(0, 6);
+
   return (
     <>
       <section className="hero">
@@ -58,14 +34,15 @@ export default function HomePage() {
         </div>
         <div className="grid">
           {featuredAssets.map((asset) => (
-            <Link key={asset.id} href={`/assets/${asset.id}`} className="card asset-card">
+            <Link key={asset.id} href={`/assets/${asset.slug}`} className="card asset-card">
               <div className="asset-media" style={{ backgroundImage: `url(${asset.image})` }} />
               <div className="asset-copy">
                 <div className="meta">
-                  <span>{asset.type}</span>
+                  <span>{asset.category}</span>
                   <span>{asset.price}</span>
                 </div>
                 <h3>{asset.title}</h3>
+                <div className="subtle">{asset.license} license</div>
               </div>
             </Link>
           ))}
@@ -105,7 +82,7 @@ export default function HomePage() {
             <div className="list-item">
               <div>
                 <strong>Payments and licensing</strong>
-                <div className="subtle">Leave Stripe Checkout and webhooks in API and worker layers</div>
+                <div className="subtle">Catalog is now populated with uploaded sale assets; checkout is next</div>
               </div>
               <span className="metric">P0</span>
             </div>
